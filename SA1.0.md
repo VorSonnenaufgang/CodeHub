@@ -9,13 +9,13 @@ This document studies CodeHub by looking at its organization and architecture fr
 ### Table of Contents
 1. Introduction
 2. Stakeholder Analysis
-3. Logical View
-4. Process View
-5. Physical View
+3. Context View
+4. Functional View
+5. Information View
 6. Development View
-7. Scalability & Performance Perspective
-8. Evolution Perspective
-9. Conclusion
-10. References
-
-
+7. Deployment View
+8. Operational View
+9. Performance & Scalability Perspective
+10. Evolution Perspective
+11. Conclusion
+12. References
