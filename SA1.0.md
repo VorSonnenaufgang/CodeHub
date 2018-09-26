@@ -14,8 +14,7 @@ This document studies CodeHub by looking at its organization and architecture fr
 5. Information View
 6. Development View
 7. Deployment View
-8. Operational View
-9. Performance & Scalability Perspective
-10. Evolution Perspective
-11. Conclusion
-12. References
+8. Performance & Scalability Perspective
+9. Evolution Perspective
+10. Conclusion
+11. References
