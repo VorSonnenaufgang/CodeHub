@@ -18,3 +18,30 @@ This document studies CodeHub by looking at its organization and architecture fr
 9. Evolution Perspective
 10. Conclusion
 11. References
+
+### Introduction
+
+For most of our programmers, GitHub plays an essential role of our development. In GitHub, we can manage our code repositories, study and communicate with others, and broaden our horizons. However, as a website that is not convenient enough for our increasing demands, there are many official client for different platform such as GitHub Desktop for Windows and Mac, Pockhub for Android, but nothing for IOS. Therefore, the appearence of Codehub, a third party client of Github, filled the void.
+
+After browsing through the code and architecture of this project, it is amazing that most of this IOS project with more than 30,000 lines of code was completed independently by the author Dillon Buchanan, a Boston software developer. The first release of CodeHub(version 1.0.0RC1) was in September 2013, and the 2.0.0-RC1 version of CodeHub was released after three month in December. Till now, there are 574 commits of the project on GitHub with the latest 2.18.2 version, which means that the project was developed all the time by the author for five years, with some contributions from other users on GitHub. Nowadays, CodeHub is also one of the most popular third party client of GitHub on IOS platform.
+
+### Stakeholders
+
+In this section, we discuss various stakeholders involved in CodeHub according to the categorization defined by Rozanski and Woods[1]. They define a Stakeholder as following:
+>A stakeholder in the architecture of a system is an individual, team, organization, or classes thereof, having an interest in the realization of the system.
+
+Every type of stakeholders has its own wishes, requirements and influences for the project. So we'd like to describe them according to their roles and concerns about this project.
+However, as CodeHub is written by one author instead of a company, there are less classes of Stakeholders than those described by Rozanski and Woods.
+
+|Stakeholders|Introduction|
+|-----|------|
+|Assessors|Oversee the system’s conformance to standards and legal regulation. For CodeHub, this class consist of the author, Dillon Buchanan.|
+|Communicators|Explain the system to other stakeholders via its documentation and training materials. For CodeHub, this class consist of the author, who has written the file README.md and an official website for CodeHub to explain this project.|
+|Developers|Construct and deploy the system. For CodeHub, this class consist of the author and other contributing members on GitHub.|
+|Maintainers|Manage the evolution of the system once it is operational. For CodeHub, this class consist of the author of this project, who has written this project independently and continuously update it in GitHub and App Store.|
+|Testers|Test the system to ensure that it is suitable for use. For CodeHub, this class contains all the reviewers and contributors on GitHub who pull or fork this project to test it.|
+|Users|Define the system’s functionality and ultimately make use of it. For CodeHub, this class contains all the users who have downloaded, used and made comments on this software on App Store.|
+
+### References
+
+1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
