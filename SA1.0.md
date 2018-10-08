@@ -28,11 +28,12 @@ After browsing through the code and architecture of this project, it is amazing 
 
 In this section, we discuss various stakeholders involved in CodeHub according to the categorization defined by Rozanski and Woods[1]. They define a Stakeholder as following:
 >A stakeholder in the architecture of a system is an individual, team, organization, or classes thereof, having an interest in the realization of the system.
+
 Every type of stakeholders has its own wishes, requirements and influences for the project. So we'd like to describe them according to their roles and concerns about this project.
 However, as CodeHub is written by one author instead of a company, there are less classes of Stakeholders than those described by Rozanski and Woods.
 
 |Stakeholders|Introduction|
-|-|-|-|
+|-----|------|
 |Assessors|Oversee the system’s conformance to standards and legal regulation. For CodeHub, this class consist of the author, Dillon Buchanan.|
 |Communicators|Explain the system to other stakeholders via its documentation and training materials. For CodeHub, this class consist of the author, who has written the file README.md and an official website for CodeHub to explain this project.|
 |Developers|Construct and deploy the system. For CodeHub, this class consist of the author and other contributing members on GitHub.|
