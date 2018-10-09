@@ -54,6 +54,16 @@ In short, the most important responsibilities and capabilities of the system are
 * Enable users to read their github through app, thus change the situation that can only be accessed through web browsers.
 * Almost covers all the features of github, which can be call "read-only" github.
 
+#### External	Entities
+Codehub is a widely-used app to access github account on ios platform. As one can image, a software project like this cannot be developed without external libraries, tools and frameworks. Below, there are several entities in Codehub, and together they set up the enviroment of it. The external entities are listed below:
+* Developing language: C#.
+* IDE for programming: Visual Studio.
+* Framework: Xamarin, a free C# framework for iOS applications.
+* Dependency: Json.NET, ReactiveUI, MVVMCross, Marked.js.
+* Supported By: Github.
+* Communication tools: Github.
+* Users: any users on ios platform(e.g.	iPhone, iPod Touch, and iPad device).
+
 
 ### References
 
