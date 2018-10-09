@@ -47,6 +47,14 @@ However, as CodeHub is written by one author instead of a company, there are les
 In this section, the context viewpoint of Codehub is described. The context view describes and visualises the relationships and interactions between Codehub with the environment. According to the categorization defined by Rozanski and Woods[1], they define a Context viewpoint as following:
 >Context viewpoint describes the relationships, dependencies, and interactions between the system and its environment (the people, systems, and external entities with which it interacts).
 
+#### System scope & responsibilities
+With the development of mobile devices, people are accustomed to accessing the server on the mobile side, rather than through a web browser. Codehub aims to implement it on any ios platform. The goal of this system is to create an environment which allows developers to login in their github account and browse their repositories and other information in their github account. In other words, Codehub is an "read-only" github on the ios system.
+In short, the most important responsibilities and capabilities of the system are:
+* Enable users to access their github account from all the ios platforms(e.g.	iPhone, iPod Touch, and iPad device).
+* Enable users to read their github through app, thus change the situation that can only be accessed through web browsers.
+* Almost covers all the features of github, which can be call "read-only" github.
+
+
 ### References
 
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
