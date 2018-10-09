@@ -53,6 +53,7 @@ In short, the most important responsibilities and capabilities of the system are
 * Enable users to access their github account from all the ios platforms(e.g.	iPhone, iPod Touch, and iPad device).
 * Enable users to read their github through app, thus change the situation that can only be accessed through web browsers.
 * Almost covers all the features of github, which can be call "read-only" github.
+* More convenient for account management. Codehub can help us manage several accounts, which makes users more convenient to switch account compare to the github on the web.
 
 #### External	Entities
 Codehub is a widely-used app to access github account on ios platform. As one can image, a software project like this cannot be developed without external libraries, tools and frameworks. Below, there are several entities in Codehub, and together they set up the enviroment of it. The external entities are listed below:
