@@ -69,3 +69,10 @@ Codehub is a widely-used app to access github account on ios platform. As one ca
 ### References
 
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
+
+
+### 3. Development View
+
+The development view describes the architecture	of a project from the viewpoint	ofthe developers.	According	to	Rozanski	and	Woods	[1], the	development	vie is responsible for addressing	different aspects	of the system	development	process	such as code structure and dependencies, build and configuration management	of deliverables, system-wide design constraints, and system-wide standards to	ensure	technical	integrity. In the	following sections,	the	development	view of Codehub	is presented based on	the	three	models that	Rozanski	and	Woods	[1]	define in	their	book:	Module Structure	Model, Common Design Model and Codeline	Model. In	addition to	this,	a	high-level	view of	CodeHub is included	in order to	ensure a thorough	understanding	of the project in	different	granularity.
+
+The High Level View has showed in the directory ViewGraph. First, the user interacts with the CodeHub client, where the user can perform operations such as editing, synchronizing, and pushing branches. These requests are sent to the Codehub server. This can be an HTTP or WebSocket request. The CodeHub server then synchronizes these operations with the user's data on the Github. Finally, codehu returns to the user successfully.
