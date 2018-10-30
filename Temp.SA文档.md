@@ -42,7 +42,7 @@ However, as CodeHub is written by one author instead of a company, there are les
 |Testers|Test the system to ensure that it is suitable for use. For CodeHub, this class contains all the reviewers and contributors on GitHub who pull or fork this project to test it.|
 |Users|Define the system’s functionality and ultimately make use of it. For CodeHub, this class contains all the users who have downloaded, used and made comments on this software on App Store.|
 
-### 2. Context View
+### 3. Context View
 
 In this section, the context viewpoint of Codehub is described. The context view describes and visualises the relationships and interactions between Codehub with the environment. According to the categorization defined by Rozanski and Woods[1], they define a Context viewpoint as following:
 >Context viewpoint describes the relationships, dependencies, and interactions between the system and its environment (the people, systems, and external entities with which it interacts).
@@ -71,7 +71,13 @@ Codehub is a widely-used app to access github account on ios platform. As one ca
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
 
 
-### 3. Development View
+### 5. Information View
+The ultimate purpose of any software system is to manipulate data in some form. This data may be stored persistently in a database management system, in ordinary files, or in some other storage medium such as flash memory, or it may be transiently manipulated in memory while a program executes.
+
+Formal data modeling and design can be a long and complex process. An architect can do data modeling only at an architecturally significant level of detail. We need to focus on those aspects of the data model where getting it wrong would affect the system as a whole rather than just a part of it. We have to figure out how the developer form those data, and produce a complete but high-level view of static information structure and dynamic information flow, with the objective of answering the big questions around ownership, latency, references, and so forth.
+
+
+### 6. Development View
 
 The development view describes the architecture	of a project from the viewpoint	ofthe developers.	According	to	Rozanski	and	Woods	[1], the	development	vie is responsible for addressing	different aspects	of the system	development	process	such as code structure and dependencies, build and configuration management	of deliverables, system-wide design constraints, and system-wide standards to	ensure	technical	integrity. In the	following sections,	the	development	view of Codehub	is presented based on	the	three	models that	Rozanski	and	Woods	[1]	define in	their	book:	Module Structure	Model, Common Design Model and Codeline	Model. In	addition to	this,	a	high-level	view of	CodeHub is included	in order to	ensure a thorough	understanding	of the project in	different	granularity.
 
@@ -85,5 +91,4 @@ The	module structure model defines the organisation	of the system's	code cluster
 3. Filter
 4. Message
 5. Service
-
 
