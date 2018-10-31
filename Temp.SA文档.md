@@ -76,6 +76,102 @@ The ultimate purpose of any software system is to manipulate data in some form. 
 
 Formal data modeling and design can be a long and complex process. An architect can do data modeling only at an architecturally significant level of detail. We need to focus on those aspects of the data model where getting it wrong would affect the system as a whole rather than just a part of it. We have to figure out how the developer form those data, and produce a complete but high-level view of static information structure and dynamic information flow, with the objective of answering the big questions around ownership, latency, references, and so forth.
 
+In the application of Codehub, it is of vital importance to get the correct data of the user who signed in, and organize the data in a proper way and then present those user data, absolutely, so when we try to rebuild the architecture of the software, we can not pass the disscussion of information view.
+
+#### 5.1 Information ownership
+Since Codehub's main role is as a mobile-side GitHub application, there is no doubt that its main source of data is GitHub, and GitHub is a fully open source public code repository. Although the user's data is officially saved, but at the same time , GitHub also provides APIs for users to obtain user data, many of which resources on the users API provide a shortcut for getting information about the previously authenticated user.
+The Codehub developer, of course, also uses the API provided by GitHub to get all the data on GitHub for the currently logged-in user on the app, including the user's personal information and preferences, the user's code repository and repository information and content, user's historical behavior on the GitHub such as staring, pulling issues. Of course, these are the static structure of the user information, and through the GitHub API, the developer also provides the user with the same operation in the GitHub Web version on the Codehub conveniently, because the user's behavior on GitHub is also done by adding, deleting, and changing data. Officials completely allow developers to use GitHub personal data and information from users who voluntarily provide information, which is completely widely used by many developers.
+
+
+#### 5.2 Information structure and content
+Let's take a look at how Codehub uses the GitHub API to get user data and use it successfully. The main thing to focus on here is the code files in the Data folder. 
+
+![Data Source Code]()
+
+The developers have completed the acquisition and change methods of user data in these classes , but at the same time we need to refer to the [official developer documentation](https://developer.github.com/v3/) provided by GitHub, in which the GitHub clearly shows the interface of the data and how to obtain and use it.
+
+The following json codes shows the official root endpoints of the GitHub data:
+
+```jason
+{
+  "current_user_url": "https://api.github.com/user",
+  "current_user_authorizations_html_url": "https://github.com/settings/connections/applications{/client_id}",
+  "authorizations_url": "https://api.github.com/authorizations",
+  "code_search_url": "https://api.github.com/search/code?q={query}{&page,per_page,sort,order}",
+  "commit_search_url": "https://api.github.com/search/commits?q={query}{&page,per_page,sort,order}",
+  "emails_url": "https://api.github.com/user/emails",
+  "emojis_url": "https://api.github.com/emojis",
+  "events_url": "https://api.github.com/events",
+  "feeds_url": "https://api.github.com/feeds",
+  "followers_url": "https://api.github.com/user/followers",
+  "following_url": "https://api.github.com/user/following{/target}",
+  "gists_url": "https://api.github.com/gists{/gist_id}",
+  "hub_url": "https://api.github.com/hub",
+  "issue_search_url": "https://api.github.com/search/issues?q={query}{&page,per_page,sort,order}",
+  "issues_url": "https://api.github.com/issues",
+  "keys_url": "https://api.github.com/user/keys",
+  "notifications_url": "https://api.github.com/notifications",
+  "organization_repositories_url": "https://api.github.com/orgs/{org}/repos{?type,page,per_page,sort}",
+  "organization_url": "https://api.github.com/orgs/{org}",
+  "public_gists_url": "https://api.github.com/gists/public",
+  "rate_limit_url": "https://api.github.com/rate_limit",
+  "repository_url": "https://api.github.com/repos/{owner}/{repo}",
+  "repository_search_url": "https://api.github.com/search/repositories?q={query}{&page,per_page,sort,order}",
+  "current_user_repositories_url": "https://api.github.com/user/repos{?type,page,per_page,sort}",
+  "starred_url": "https://api.github.com/user/starred{/owner}{/repo}",
+  "starred_gists_url": "https://api.github.com/gists/starred",
+  "team_url": "https://api.github.com/teams",
+  "user_url": "https://api.github.com/users/{user}",
+  "user_organizations_url": "https://api.github.com/user/orgs",
+  "user_repositories_url": "https://api.github.com/users/{user}/repos{?type,page,per_page,sort}",
+  "user_search_url": "https://api.github.com/search/users?q={query}{&page,per_page,sort,order}"
+}
+```
+
+Just look at the names of these urls and we will know the specific data used by these paths. Of course, these are not all used in Codehub, but it is true that developers use most of the data. In the `\CodeHub.Core\Data\Account.cs` file, the developer defines a number of methods for getting and modifying data, but here the developer just completes basic classes and method definitions, implements the data retrieval and return, and the specific data usage and modification is still done in each functional module.
+
+![Static Information Structure Model]()
+
+
+#### 5.3 Information purpose and usage
+The first thing you need to know is that all queries before now do not require any permissions. You only need to return data according to the given address, which is completely public. But the function we want to implement in Codehub is not only to query the full public data, but for users who have already logged in, they may have to create files, update or delete them on Codehub, that is, they must use their own account to " Login to " and use some features that can be achieved.
+
+So in order to implement Codehub additions, deletions and changes, we need to look at the permissions issue first.
+There are three commonly used authentication methods, `Basic authentication`, `OAuth2 token`, `OAuth2 key/secret`. The three authentication methods have the same effect, but each has its own features and conveniences. It depends on the developer's own needs.
+
+Basic authentication
+
+```
+curl -u "username" https://api.github.com
+```
+
+OAuth2 token (sent in a header)
+
+```
+curl -H "Authorization: token OAUTH-TOKEN" https://api.github.com
+```
+
+OAuth2 token (sent as a parameter)
+
+```
+curl https://api.github.com/?access_token=OAUTH-TOKEN
+```
+
+Note that OAuth2 tokens can be acquired programmatically, for applications that are not websites.
+
+OAuth2 key/secret
+
+```
+curl 'https://api.github.com/users/whatever?client_id=xxxx&client_secret=yyyy'
+```
+This should only be used in server to server scenarios. Don't leak your OAuth application's client secret to your users.
+
+In Codehub, in the `\CodeHub.Core\ViewModels\Accounts\OAuthLoginViewModel.cs`, developer use the third way to complete the authentication, and then use and change the data in almost every view Model of the applicaiton, you can see the get and set data methods in every class file in the directory`\CodeHub.Core\ViewModels\`.
+
+According to the official document and the detailed usage of the data in the source code of Codehub, we draw a sketch of the information flow model, the main purpose of the data is to get the user's GitHub information and data, and update the latest GitHub news, of course, when it comes to the operation of the repos, it will also provide timely reminder of the repos information and repos-related messages. And codehub will be synchronized to GitHub in time as user modify and update the data.
+
+![Information Flow Model]()
+
 
 ### 6. Development View
 
