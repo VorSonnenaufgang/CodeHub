@@ -40,7 +40,7 @@ However, as CodeHub is written by one author instead of a company, there are les
 |Developers|Construct and deploy the system. For CodeHub, this class consist of the author and other contributing members on GitHub.|
 |Maintainers|Manage the evolution of the system once it is operational. For CodeHub, this class consist of the author of this project, who has written this project independently and continuously update it in GitHub and App Store.|
 |Testers|Test the system to ensure that it is suitable for use. For CodeHub, this class contains all the reviewers and contributors on GitHub who pull or fork this project to test it.|
-|Users|Define the system’s functionality and ultimately make use of it. For CodeHub, this class contains all the users who have downloaded, used and made comments on this software on App Store.|
+|Users|Define the system’s functionality and ultimately make use of it. For CodeHub, this class contains all the users who have downloaded, used and made comments on this software on App Store. 
 
 ### 3. Context View
 
