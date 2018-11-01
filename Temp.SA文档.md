@@ -66,11 +66,6 @@ Codehub is a widely-used app to access github account on ios platform. As one ca
 * Users: any users on ios platform(e.g.	iPhone, iPod Touch, and iPad device).
 
 
-### References
-
-1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
-
-
 ### 5. Information View
 The ultimate purpose of any software system is to manipulate data in some form. This data may be stored persistently in a database management system, in ordinary files, or in some other storage medium such as flash memory, or it may be transiently manipulated in memory while a program executes.
 
@@ -216,3 +211,7 @@ The specific dependency diagrams between the submodules under these two modules 
 
 As can be seen from the figure, the sub-modules under the .Core module are actually lower-level definitions at the data layer, service layer, application layer, etc., and the sub-modules under the .ios module are correspondingly higher-level implementations. It relies on and calls the interface of the corresponding submodule under the core, and realizes the view and logic of interacting with the user.
 
+
+### References
+
+1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
