@@ -181,12 +181,38 @@ The High Level View has showed in the directory ViewGraph. First, the user inter
 
 <img alt="HighLevelView" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
 
-#### Module Structure Model
+####6.1 Module Structure Model
 The	module structure model defines the organisation	of the system's	code clustering	related source code	files	into modules and determining the dependencies	between	them [1].	In this section	first	the	modules	of the project are briefly described and then	the	dependencies between them	are	visualised in a	diagram. It	should be	also	noted	that this	section	focuses only on	the	internal modules	of the project and not the external	dependencies.
-##### I -- Module Structure of Core
-1. Data
-2. Extension
-3. Filter
-4. Message
-5. Service
+
+As a framework, the source code of CodeHub could be	organized	as model structure,	as shown on	the	figure below.	In this figure,	the	ecosystem	of CodeHub is divided	into two major parts: Core internal structrue and Ios client structrue.
+
+<img alt="ecosystem of CodeHub" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/PackageDiagram1.jpg" width="100%">
+
+#####6.1.1 -- Module Structure of Core
+1. Data: This module contains classes that define the user's class and language repository, not dependent on other submodules, but it relies on external dependencies such as .Net packages.
+2. Extension: This module contains extensions to Github's external extensions and command lines, provides command-line invocation functionality, and some exception handling features that do not have any dependencies on other modules in CodeHub. There is a dependency on external packages such as ReactiveUI.
+3. Filter: This module defines some of the related functions of the problem filter, which depends on some submodules in the VIewModel module.
+4. Message: This module defines related sub-modules and sub-functions for message passing and processing, including the function mechanism of adding Gist messages, login logout messages, pull push messages, source code editing changes, etc. This module is in the ViewModel APP, Accounts Submodules such as PullRequests are called and depend on.
+5. Service: This module defines the functional sub-modules of the service layer in the project, which hides the details of the business logic layer. It needs to organize the business micro-services internally, provide a more macro-oriented, presentation-oriented service logic, and expose and package using the contract interface. All interactions in the system are entered from the presentation layer. It is primarily responsible for the logical application design of the business module. Under this module, the function codes of related services such as account service, log service, and network activity service are included. This module relies on the data modules under the Core module and is also dependent on many submodules in the ViewModel.
+6. Properties: This module uses the reflection mechanism to define the functionality of AssemblyInfo, using Guid to expose the COM components of the project. This module has no dependencies on other modules in Codehub.
+7. Util: This module contains some of the tool class modules under the underlying logic, such as extended access to Github, functional integration of emoticons, and sub-modules such as code repository flags and view block extensions, which depend on the Service module, and the ViewModel module. There are also some submodules that depend on it.
+8. ViewModels： This module defines the connection layer ViewModel of View and Model. In MVVMCross, the ViewModel interacts with the Model (data layer), and the ViewMode can be viewed by the View. The ViewModel can optionally provide hooks for the view to pass events to the model. An important implementation strategy for this layer is to separate the Model from the View, ie the view that the ViewModel should not be aware of. In this module, it specifically includes sub-modules such as Account, App, ChangeSets, Events, Gists, Issues, Notifications, Organizations, PullRequests, Respositories, Search, Source, and Users. These sub-modules are functionally and structurally dependent on each other. It also contains dependencies from external packages such as MVVMCross.Platform. In addition, the ViewModel module also includes function sub-modules such as filters, Markdown and web browsing.
+
+#####6.1.2 -- Module Structure of IOS Client
+1. DialogElements: This module defines the specific classification and function of the dialog module. It is a module that interacts with the outside world. It is a high-level implementation of the corresponding ViewController component, including the specific interface elements such as User Element and PullRequests element.
+2. Resources: This module contains some static resource files on the ios side, such as icon material. The resource files in this module are used in the View module. Does not depend on other internal modules
+3. Services: This module is a high-level implementation of the Service layer under the Core module. It relies on the definition and implementation of the Service sub-module under the Core module, and exposes the interface to call the corresponding function of each corresponding sub-module in the ViewController.
+4. Utilities: This module is a high-level implementation of the Util submodule under the Core module. It relies on the definition and implementation of the Util submodule under the Core module. It provides a more specific definition and implementation of the utility class and exposes the interface to each of the ViewController. The corresponding submodule calls the relevant function.
+5. ViewControllers: This module is a high-level implementation of the ViewModel sub-module under the Core module. It relies on the definition and implementation of the ViewModel sub-module under the Core module, and provides sub-modules corresponding to the ViewModel, such as Accounts, Application, Events, Filters, Gists, Organization, Sub-modules such as PullRequests, Respositories, Search, Source, and User are the connection layer components that are closer to the user and directly define the underlying logic functions that interact with the user.
+6. TableViewCells: This module is a view controller class that interacts directly with the user and contains the direct logic for interacting with the user. And the module contains various view layouts and styles, and implements interfaces and components that interact directly with the user.
+7. TableViewSources: This module contains the resource invocation interface with the user interaction view, including the user's dynamic warehouse data interface, static resource framework source, and so on. Rely on the definition and implementation of sub-modules such as Respositories under ViewController.
+8. Views: This module is a collection of iOS-client application view classes. It defines the static component function implementation of the view, providing direct front-end components and functional definitions for user interaction.
+
+The specific dependency diagrams between the submodules under these two modules are as follows:
+
+<img alt="specific dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/Main.jpg" width="100%">
+
+
+
+As can be seen from the figure, the sub-modules under the .Core module are actually lower-level definitions at the data layer, service layer, application layer, etc., and the sub-modules under the .ios module are correspondingly higher-level implementations. It relies on and calls the interface of the corresponding submodule under the core, and realizes the view and logic of interacting with the user.
 
