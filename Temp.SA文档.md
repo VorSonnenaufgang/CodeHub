@@ -179,6 +179,8 @@ The development view describes the architecture	of a project from the viewpoint	
 
 The High Level View has showed in the directory ViewGraph. First, the user interacts with the CodeHub client, where the user can perform operations such as editing, synchronizing, and pushing branches. These requests are sent to the Codehub server. This can be an HTTP or WebSocket request. The CodeHub server then synchronizes these operations with the user's data on the Github. Finally, codehu returns to the user successfully.
 
+<img alt="HighLevelView" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
+
 #### Module Structure Model
 The	module structure model defines the organisation	of the system's	code clustering	related source code	files	into modules and determining the dependencies	between	them [1].	In this section	first	the	modules	of the project are briefly described and then	the	dependencies between them	are	visualised in a	diagram. It	should be	also	noted	that this	section	focuses only on	the	internal modules	of the project and not the external	dependencies.
 ##### I -- Module Structure of Core
