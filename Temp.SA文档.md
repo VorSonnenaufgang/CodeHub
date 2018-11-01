@@ -65,6 +65,21 @@ Codehub is a widely-used app to access github account on ios platform. As one ca
 * Communication tools: Github.
 * Users: any users on ios platform(e.g.	iPhone, iPod Touch, and iPad device).
 
+### 3. Functional View
+In this section, I will write something about the functional view. The functional view, which emphasizes the functional capabilities and functional design philosophy of the system, is something like the responsibilities of context view, but more in detail. Therefore, I will introduce this section in four parts as follows.
+
+#### Functional capabilities
+First of all, codehub contains almost all of the functions of github. So, the basic funtions of codehub are: 
+
+* Provide the repositories of users' code.
+* Control the version of code, include the forward and backward the the code and software.
+* Allow mutiple branches to exist, to enable different developers change the file at the same time, which promote the efficiency.
+* And so on...
+
+Of course, these are the functions of the github itself. Codehub uses the interface github provides to implement the basic functions. Besides, Codehub has its own special characteristics. They are:
+
+* Breaking the dilemma of the absence of github client on the ios platform.
+* Account managment. Users can switch several accounts conveniently.
 
 ### 5. Information View
 The ultimate purpose of any software system is to manipulate data in some form. This data may be stored persistently in a database management system, in ordinary files, or in some other storage medium such as flash memory, or it may be transiently manipulated in memory while a program executes.
