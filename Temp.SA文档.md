@@ -65,7 +65,7 @@ Codehub is a widely-used app to access github account on ios platform. As one ca
 * Communication tools: Github.
 * Users: any users on ios platform(e.g.	iPhone, iPod Touch, and iPad device).
 
-### 3. Functional View
+### 4. Functional View
 In this section, I will write something about the functional view. The functional view, which emphasizes the functional capabilities and functional design philosophy of the system, is something like the responsibilities of context view, but more in detail. Therefore, I will introduce this section in four parts as follows.
 
 #### Functional capabilities
