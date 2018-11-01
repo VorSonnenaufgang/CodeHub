@@ -181,14 +181,14 @@ The High Level View has showed in the directory ViewGraph. First, the user inter
 
 <img alt="HighLevelView" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
 
-####6.1 Module Structure Model
+#### 6.1 Module Structure Model
 The	module structure model defines the organisation	of the system's	code clustering	related source code	files	into modules and determining the dependencies	between	them [1].	In this section	first	the	modules	of the project are briefly described and then	the	dependencies between them	are	visualised in a	diagram. It	should be	also	noted	that this	section	focuses only on	the	internal modules	of the project and not the external	dependencies.
 
 As a framework, the source code of CodeHub could be	organized	as model structure,	as shown on	the	figure below.	In this figure,	the	ecosystem	of CodeHub is divided	into two major parts: Core internal structrue and Ios client structrue.
 
 <img alt="ecosystem of CodeHub" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/PackageDiagram1.jpg" width="100%">
 
-#####6.1.1 -- Module Structure of Core
+##### 6.1.1 -- Module Structure of Core
 1. Data: This module contains classes that define the user's class and language repository, not dependent on other submodules, but it relies on external dependencies such as .Net packages.
 2. Extension: This module contains extensions to Github's external extensions and command lines, provides command-line invocation functionality, and some exception handling features that do not have any dependencies on other modules in CodeHub. There is a dependency on external packages such as ReactiveUI.
 3. Filter: This module defines some of the related functions of the problem filter, which depends on some submodules in the VIewModel module.
@@ -198,7 +198,7 @@ As a framework, the source code of CodeHub could be	organized	as model structure
 7. Util: This module contains some of the tool class modules under the underlying logic, such as extended access to Github, functional integration of emoticons, and sub-modules such as code repository flags and view block extensions, which depend on the Service module, and the ViewModel module. There are also some submodules that depend on it.
 8. ViewModels： This module defines the connection layer ViewModel of View and Model. In MVVMCross, the ViewModel interacts with the Model (data layer), and the ViewMode can be viewed by the View. The ViewModel can optionally provide hooks for the view to pass events to the model. An important implementation strategy for this layer is to separate the Model from the View, ie the view that the ViewModel should not be aware of. In this module, it specifically includes sub-modules such as Account, App, ChangeSets, Events, Gists, Issues, Notifications, Organizations, PullRequests, Respositories, Search, Source, and Users. These sub-modules are functionally and structurally dependent on each other. It also contains dependencies from external packages such as MVVMCross.Platform. In addition, the ViewModel module also includes function sub-modules such as filters, Markdown and web browsing.
 
-#####6.1.2 -- Module Structure of IOS Client
+##### 6.1.2 -- Module Structure of IOS Client
 1. DialogElements: This module defines the specific classification and function of the dialog module. It is a module that interacts with the outside world. It is a high-level implementation of the corresponding ViewController component, including the specific interface elements such as User Element and PullRequests element.
 2. Resources: This module contains some static resource files on the ios side, such as icon material. The resource files in this module are used in the View module. Does not depend on other internal modules
 3. Services: This module is a high-level implementation of the Service layer under the Core module. It relies on the definition and implementation of the Service sub-module under the Core module, and exposes the interface to call the corresponding function of each corresponding sub-module in the ViewController.
