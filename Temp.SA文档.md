@@ -88,7 +88,7 @@ In the figure below, one can identify three external interfaces:
 ##### 2.build-tool(Xamarin)
 ##### 3.Github Api
 
-<img alt="External Interfaces" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
+<img alt="External Interfaces" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/ExternalInterface.png" width="100%">
 
 I will now discuss the responsibilities and the philosophy underlying the design of each of these interfaces by applying the architectural principles I identified.
 
@@ -98,9 +98,9 @@ I will now discuss the responsibilities and the philosophy underlying the design
 
 In fact, when using Xamarin, the efficiency of development get faster. The two figures below shows the efficiency of Xamarin on the platform of Android and iOS.
 
-<img alt="Xamarin on Android" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
+<img alt="Xamarin on Android" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/OnAndroid.png" width="100%">
 
-<img alt="Xamarin on iOS" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
+<img alt="Xamarin on iOS" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/OniOS.png" width="100%">
 
 <B>Finally</B>, the most important external interface I think is the github api provided to the Codehub sever. It serves almost all the functions that github originally has such as file browse, branch management and so on.
 
