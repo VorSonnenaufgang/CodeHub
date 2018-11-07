@@ -119,6 +119,8 @@ The Codehub developer, of course, also uses the API provided by GitHub to get al
 #### 5.2 Information structure and content
 Let's take a look at how Codehub uses the GitHub API to get user data and use it successfully. The main thing to focus on here is the code files in the Data folder. 
 
+![Data Source Code]()
+
 The developers have completed the acquisition and change methods of user data in these classes , but at the same time we need to refer to the [official developer documentation](https://developer.github.com/v3/) provided by GitHub, in which the GitHub clearly shows the interface of the data and how to obtain and use it.
 
 The following json codes shows the official root endpoints of the GitHub data:
@@ -161,7 +163,7 @@ The following json codes shows the official root endpoints of the GitHub data:
 
 Just look at the names of these urls and we will know the specific data used by these paths. Of course, these are not all used in Codehub, but it is true that developers use most of the data. In the `\CodeHub.Core\Data\Account.cs` file, the developer defines a number of methods for getting and modifying data, but here the developer just completes basic classes and method definitions, implements the data retrieval and return, and the specific data usage and modification is still done in each functional module.
 
-![Static Information Structure Model](http://p7n3irs4w.bkt.clouddn.com/Static%20Information%20Structure%20Model.png)
+![Static Information Structure Model]()
 
 
 #### 5.3 Information purpose and usage
@@ -247,7 +249,34 @@ The specific dependency diagrams between the submodules under these two modules 
 
 As can be seen from the figure, the sub-modules under the .Core module are actually lower-level definitions at the data layer, service layer, application layer, etc., and the sub-modules under the .ios module are correspondingly higher-level implementations. It relies on and calls the interface of the corresponding submodule under the core, and realizes the view and logic of interacting with the user.
 
+#### 6.2 Codeline Model
+Codeline Model is used to	keep an	order	when it	comes	to the organization	of the	system code. In	order	to describe	CodeHub’s	Codeline	Model, we	will provide an	overview of	the source code	structure	and	the	contribution process,	based	in the information	given	in the following figure.
 
+<img alt="codeline diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/CodeHub.Core.png" width="40%"> <img alt="codeline dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/CodeHub.ios.png" width="40%">
+
+The source codes of CodeHub has two parts: Core and ios. It follows the principle of separation of views and logic, separates each module by function, and each module completes its work independently, forming various dependencies and jointly fulfilling the functions of the Codehub system.
+
+#### 6.3 Common Design Pattern
+After analyzing the Codehub project source code, we tried to analyze its software architecture from the perspective of design patterns.
+Its design pattern is based on the following two aspects：
+1. MVVM design pattern (MVVM is used in Xamarin.Forms)
+2. Three-tier structure - Model (data structure model) / Vies (view page) / ViewModel (business logic processing)
+
+For MVVM and MVC in the structural layering is basically the same - M (Model), V (View), ViewModel (Controller), and for Xamarin.Forms we add two layers of structure based on the three-layer architecture of MVVM - Repository (Api or local database), Service (using repositories), through these two layers of structure we can very well abstract the operation of the data interaction part, and the unit can be tested separately for the data part.
+
+At the same time, the Model in MVVM can maintain state and operation. Here Model does not represent the data structure model in the database, nor is it equal to the data structure type returned by the API. Its essence represents our business logic, and ViewModel is used as an intermediary. The process of conversion.
+
+<img alt="design pattern" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/design patterns1.png" width="40%">
+
+#### Service
+Service as a bridge between servers and apps, its core role is data transfer. To give you the simplest example: too many apps support offline operations, but this requires the local data store to be in sync with the content of the server returned by the API. When the app responds to the user's manipulation of the data and completes the process, the app itself I don't care about synchronizing data, but it's the result of the Service passing it with the server database.
+
+<img alt="service" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/design patterns2.png" width="40%">
+
+#### Operational separation
+ViewModels usually contain user-interactive operations. The processing of these operations needs to include the processing of connection timeouts, parameter errors, and server errors. It also reminds the user what is happening. Usually this code becomes heavy and also includes try / There may be more internal operations inside the catch for connection timeouts. After using the idea of ​​splitting operations, provide the operations required in each case separately, and then choose to return whether to navigate or display the results of certain content to the user. Since the operation is completely independent, it can also be tested separately.
+
+<img alt="Operational separation" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/design patterns4.png" width="80%">
 
 ### 7. Deployment View
 Deployment view describes the environment into which the system will be deployed, including capturing the dependencies the system has on its runtime environment. This view captures the hardware environment that your system needs (primarily the processing nodes, network interconnections, and disk storage facilities required), the technical environment requirements for each element, and the mapping of the software elements to the runtime environment that will execute them.
@@ -259,6 +288,7 @@ CodeHub	is supported by	Mac OS operating system. So, CodeHub require ios platfor
 2. Json.NET: Json.NET is a popular high-performance JSON framework for .NET.It has lots of benifits: Flexible JSON serializer for converting between .NET objects and JSON. LINQ to JSON for manually reading and writing JSON. High performance: faster than .NET's built-in JSON serializers. Write indented, easy-to-read JSON. Convert JSON to and from XML. Supports .NET 2, .NET 3.5, .NET 4, .NET 4.5, Silverlight, Windows Phone and Windows 8 Store. The JSON serializer in Json.NET is a good choice when the JSON you are reading or writing maps closely to a .NET class. LINQ to JSON is good for situations where you are only interested in getting values from JSON, you don't have a class to serialize or deserialize to, or the JSON is radically different from your class and you need to manually read and write from your objects.
 3. MVVMCross: MvvmCross is a cross-platform MVVM framework that enables developers to create powerful cross platform apps. It supports Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.Forms, Universal Windows Platform (UWP) and Windows Presentation Framework (WPF).
 4. Marked.js: Marked.js is a library written in JavaScript that can be transcoded online by Markdown. It's very convenient to compile the Markdown code to HTML and display it directly, and it supports full customization of various formats.
+5. ReactiveUI：ReactiveUI is a composable, cross-platform model-view-viewmodel framework for all .NET platforms that is inspired by functional reactive programming which is a paradigm that allows you to abstract mutable state away from your user interfaces and express the idea around a feature in one readable place and improve the testability of your application.
 
 #### The deployment diagram:
 <img alt="specific dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/DeploymentDiagram1.jpg" width="100%">
