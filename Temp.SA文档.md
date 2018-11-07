@@ -119,8 +119,6 @@ The Codehub developer, of course, also uses the API provided by GitHub to get al
 #### 5.2 Information structure and content
 Let's take a look at how Codehub uses the GitHub API to get user data and use it successfully. The main thing to focus on here is the code files in the Data folder. 
 
-![Data Source Code]()
-
 The developers have completed the acquisition and change methods of user data in these classes , but at the same time we need to refer to the [official developer documentation](https://developer.github.com/v3/) provided by GitHub, in which the GitHub clearly shows the interface of the data and how to obtain and use it.
 
 The following json codes shows the official root endpoints of the GitHub data:
@@ -163,7 +161,7 @@ The following json codes shows the official root endpoints of the GitHub data:
 
 Just look at the names of these urls and we will know the specific data used by these paths. Of course, these are not all used in Codehub, but it is true that developers use most of the data. In the `\CodeHub.Core\Data\Account.cs` file, the developer defines a number of methods for getting and modifying data, but here the developer just completes basic classes and method definitions, implements the data retrieval and return, and the specific data usage and modification is still done in each functional module.
 
-![Static Information Structure Model]()
+![Static Information Structure Model](http://p7n3irs4w.bkt.clouddn.com/Static%20Information%20Structure%20Model.png)
 
 
 #### 5.3 Information purpose and usage
