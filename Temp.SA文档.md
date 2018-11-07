@@ -252,9 +252,7 @@ As can be seen from the figure, the sub-modules under the .Core module are actua
 #### 6.2 Codeline Model
 Codeline Model is used to	keep an	order	when it	comes	to the organization	of the	system code. In	order	to describe	CodeHub’s	Codeline	Model, we	will provide an	overview of	the source code	structure	and	the	contribution process,	based	in the information	given	in the following figure.
 
-<img alt="codeline diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/CodeHub.Core.png" width="40%">
-
-<img alt="codeline dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/CodeHub.ios.png" width="40%">
+<img alt="codeline diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/CodeHub.Core.png" width="40%"> <img alt="codeline dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/CodeHub.ios.png" width="40%">
 
 The source codes of CodeHub has two parts: Core and ios. It follows the principle of separation of views and logic, separates each module by function, and each module completes its work independently, forming various dependencies and jointly fulfilling the functions of the Codehub system.
 
