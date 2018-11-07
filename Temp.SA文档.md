@@ -81,6 +81,29 @@ Of course, these are the functions of the github itself. Codehub uses the interf
 * Breaking the dilemma of the absence of github client on the ios platform.
 * Account managment. Users can switch several accounts conveniently.
 
+#### External Interfaces
+In the figure below, one can identify three external interfaces:
+
+##### 1.Codehub Client UI Api(Interact with users)
+##### 2.build-tool(Xamarin)
+##### 3.Github Api
+
+<img alt="External Interfaces" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/ExternalInterface.png" width="100%">
+
+I will now discuss the responsibilities and the philosophy underlying the design of each of these interfaces by applying the architectural principles I identified.
+
+<B>Firstly</B>, I will considering Codehub client ui api. As detailed in the figure above, the ui api contains Json.NET, ReactiveUI, MVVMCross and Marked.js. They connect the users' behavior and request with the codehub client platform. MVVMCross and RectiveUI is common framework of C# which is used to beautify the ui. And the Json.NET is a library used to parse the json object. And finally, Marked.js is also a library to make the ui more beautiful.
+
+<B>Secondly</B>, I will introduce the build-tool, Xamarin, which provide the connection with the IDE(visual studio) and the ios platform. According to the Microsoft, <a href="http://example.net/">https://docs.microsoft.com/zh-cn/xamarin/</a>, Xamarin is a portable framework. Xamarin is a C#-based cross-platform mobile app development tool that developers can use to develop native apps for iOS, Android, Mac and Windows Phone. Through the cross-platform nature of Xamarin, you can use C# language to develop various platform applications. Xamarin's cross-platform development idea is to use C# to complete all platform-shared, platform-independent app logic; because the UI and interaction of each platform are different, use Xamarin-encapsulated C# API to access and manipulate native controls. , UI development for different platforms. In this way, mobile development is more efficient and simpler.
+
+In fact, when using Xamarin, the efficiency of development get faster. The two figures below shows the efficiency of Xamarin on the platform of Android and iOS. The first figure is the development efficiency of Xamarin for iOS devices. Xamarin performs well and is 30% faster than Objective-C. I think this is the main reason why codehub is not using oc but C#. And it is second only to C++ on Android devices, so it is seen that Xamarin is a highly efficient cross-platform framework. It is a good decision to develop codehub using Xamarin.
+
+<img alt="Xamarin on Android" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/OnAndroid.png" width="100%">
+
+<img alt="Xamarin on iOS" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/OniOS.png" width="100%">
+
+<B>Finally</B>, the most important external interface I think is the github api provided to the Codehub sever. It serves almost all the functions that github originally has such as file browse, branch management and so on.
+
 ### 5. Information View
 The ultimate purpose of any software system is to manipulate data in some form. This data may be stored persistently in a database management system, in ordinary files, or in some other storage medium such as flash memory, or it may be transiently manipulated in memory while a program executes.
 
@@ -95,8 +118,6 @@ The Codehub developer, of course, also uses the API provided by GitHub to get al
 
 #### 5.2 Information structure and content
 Let's take a look at how Codehub uses the GitHub API to get user data and use it successfully. The main thing to focus on here is the code files in the Data folder. 
-
-![Data Source Code]()
 
 The developers have completed the acquisition and change methods of user data in these classes , but at the same time we need to refer to the [official developer documentation](https://developer.github.com/v3/) provided by GitHub, in which the GitHub clearly shows the interface of the data and how to obtain and use it.
 
@@ -140,7 +161,7 @@ The following json codes shows the official root endpoints of the GitHub data:
 
 Just look at the names of these urls and we will know the specific data used by these paths. Of course, these are not all used in Codehub, but it is true that developers use most of the data. In the `\CodeHub.Core\Data\Account.cs` file, the developer defines a number of methods for getting and modifying data, but here the developer just completes basic classes and method definitions, implements the data retrieval and return, and the specific data usage and modification is still done in each functional module.
 
-![Static Information Structure Model]()
+![Static Information Structure Model](http://p7n3irs4w.bkt.clouddn.com/Static%20Information%20Structure%20Model.png)
 
 
 #### 5.3 Information purpose and usage
@@ -240,7 +261,7 @@ CodeHub	is supported by	Mac OS operating system. So, CodeHub require ios platfor
 4. Marked.js: Marked.js is a library written in JavaScript that can be transcoded online by Markdown. It's very convenient to compile the Markdown code to HTML and display it directly, and it supports full customization of various formats.
 
 #### The deployment diagram:
-
+<img alt="specific dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/DeploymentDiagram1.jpg" width="100%">
 
 ### References
 
