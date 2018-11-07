@@ -81,6 +81,29 @@ Of course, these are the functions of the github itself. Codehub uses the interf
 * Breaking the dilemma of the absence of github client on the ios platform.
 * Account managment. Users can switch several accounts conveniently.
 
+#### External Interfaces
+In the figure below, one can identify three external interfaces:
+
+##### 1.Codehub Client UI Api(Interact with users)
+##### 2.build-tool(Xamarin)
+##### 3.Github Api
+
+<img alt="External Interfaces" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
+
+I will now discuss the responsibilities and the philosophy underlying the design of each of these interfaces by applying the architectural principles I identified.
+
+<B>Firstly</B>, I will considering Codehub client ui api. As detailed in the figure above, the ui api contains Json.NET, ReactiveUI, MVVMCross and Marked.js. They connect the users' behavior and request with the codehub client platform. MVVMCross and RectiveUI is common framework of C# which is used to beautify the ui. And the Json.NET is a library used to parse the json object. And finally, Marked.js is also a library to make the ui more beautiful.
+
+<B>Secondly</B>, I will introduce the build-tool, Xamarin, which provide the connection with the IDE(visual studio) and the ios platform. According to the Microsoft, <a href="http://example.net/">https://docs.microsoft.com/zh-cn/xamarin/</a>, Xamarin is a portable framework. Xamarin is a C#-based cross-platform mobile app development tool that developers can use to develop native apps for iOS, Android, Mac and Windows Phone. Through the cross-platform nature of Xamarin, you can use C# language to develop various platform applications. Xamarin's cross-platform development idea is to use C# to complete all platform-shared, platform-independent app logic; because the UI and interaction of each platform are different, use Xamarin-encapsulated C# API to access and manipulate native controls. , UI development for different platforms. In this way, mobile development is more efficient and simpler.
+
+In fact, when using Xamarin, the efficiency of development get faster. The two figures below shows the efficiency of Xamarin on the platform of Android and iOS.
+
+<img alt="Xamarin on Android" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
+
+<img alt="Xamarin on iOS" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
+
+<B>Finally</B>, the most important external interface I think is the github api provided to the Codehub sever. It serves almost all the functions that github originally has such as file browse, branch management and so on.
+
 ### 5. Information View
 The ultimate purpose of any software system is to manipulate data in some form. This data may be stored persistently in a database management system, in ordinary files, or in some other storage medium such as flash memory, or it may be transiently manipulated in memory while a program executes.
 
