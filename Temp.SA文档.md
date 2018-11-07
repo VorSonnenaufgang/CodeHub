@@ -161,7 +161,7 @@ The following json codes shows the official root endpoints of the GitHub data:
 
 Just look at the names of these urls and we will know the specific data used by these paths. Of course, these are not all used in Codehub, but it is true that developers use most of the data. In the `\CodeHub.Core\Data\Account.cs` file, the developer defines a number of methods for getting and modifying data, but here the developer just completes basic classes and method definitions, implements the data retrieval and return, and the specific data usage and modification is still done in each functional module.
 
-![Static Information Structure Model]()
+![Static Information Structure Model](http://p7n3irs4w.bkt.clouddn.com/Static%20Information%20Structure%20Model.png)
 
 
 #### 5.3 Information purpose and usage
