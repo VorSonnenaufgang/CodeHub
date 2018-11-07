@@ -240,7 +240,7 @@ CodeHub	is supported by	Mac OS operating system. So, CodeHub require ios platfor
 4. Marked.js: Marked.js is a library written in JavaScript that can be transcoded online by Markdown. It's very convenient to compile the Markdown code to HTML and display it directly, and it supports full customization of various formats.
 
 #### The deployment diagram:
-
+<img alt="specific dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/DeploymentDiagram1.jpg" width="100%">
 
 ### References
 
