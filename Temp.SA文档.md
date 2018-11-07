@@ -203,7 +203,7 @@ In Codehub, in the `\CodeHub.Core\ViewModels\Accounts\OAuthLoginViewModel.cs`, d
 
 According to the official document and the detailed usage of the data in the source code of Codehub, we draw a sketch of the information flow model, the main purpose of the data is to get the user's GitHub information and data, and update the latest GitHub news, of course, when it comes to the operation of the repos, it will also provide timely reminder of the repos information and repos-related messages. And codehub will be synchronized to GitHub in time as user modify and update the data.
 
-![Information Flow Model]()
+![Information Flow Model](http://p7n3irs4w.bkt.clouddn.com/Information%20Flow%20Model.png)
 
 
 ### 6. Development View
