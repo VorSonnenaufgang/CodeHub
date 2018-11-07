@@ -227,6 +227,21 @@ The specific dependency diagrams between the submodules under these two modules 
 As can be seen from the figure, the sub-modules under the .Core module are actually lower-level definitions at the data layer, service layer, application layer, etc., and the sub-modules under the .ios module are correspondingly higher-level implementations. It relies on and calls the interface of the corresponding submodule under the core, and realizes the view and logic of interacting with the user.
 
 
+
+### 7. Deployment View
+Deployment view describes the environment into which the system will be deployed, including capturing the dependencies the system has on its runtime environment. This view captures the hardware environment that your system needs (primarily the processing nodes, network interconnections, and disk storage facilities required), the technical environment requirements for each element, and the mapping of the software elements to the runtime environment that will execute them.
+
+CodeHub	is supported by	Mac OS operating system. So, CodeHub require ios platform to deploy. It can be reached on any iOS platform, like iPhone, iPod Touch, and iPad device.
+
+#### Third-Party Software Requirements:
+1. Xamarin: Xamarin was founded in 2011 to make mobile development incredibly fast and simple. Xamarin's products simplify application development for multiple platforms, including iOS, Android, Windows Phone, and Mac App. Xamarin was founded and participated by many well-known open source community developers, and is the open source, cross-platform implementation of the C# and .NET frameworks, the leader of the Mono project.
+2. Json.NET: Json.NET is a popular high-performance JSON framework for .NET.It has lots of benifits: Flexible JSON serializer for converting between .NET objects and JSON. LINQ to JSON for manually reading and writing JSON. High performance: faster than .NET's built-in JSON serializers. Write indented, easy-to-read JSON. Convert JSON to and from XML. Supports .NET 2, .NET 3.5, .NET 4, .NET 4.5, Silverlight, Windows Phone and Windows 8 Store. The JSON serializer in Json.NET is a good choice when the JSON you are reading or writing maps closely to a .NET class. LINQ to JSON is good for situations where you are only interested in getting values from JSON, you don't have a class to serialize or deserialize to, or the JSON is radically different from your class and you need to manually read and write from your objects.
+3. MVVMCross: MvvmCross is a cross-platform MVVM framework that enables developers to create powerful cross platform apps. It supports Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.Forms, Universal Windows Platform (UWP) and Windows Presentation Framework (WPF).
+4. Marked.js: Marked.js is a library written in JavaScript that can be transcoded online by Markdown. It's very convenient to compile the Markdown code to HTML and display it directly, and it supports full customization of various formats.
+
+#### The deployment diagram:
+
+
 ### References
 
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
