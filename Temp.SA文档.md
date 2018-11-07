@@ -65,11 +65,21 @@ Codehub is a widely-used app to access github account on ios platform. As one ca
 * Communication tools: Github.
 * Users: any users on ios platform(e.g.	iPhone, iPod Touch, and iPad device).
 
+### 4. Functional View
+In this section, I will write something about the functional view. The functional view, which emphasizes the functional capabilities and functional design philosophy of the system, is something like the responsibilities of context view, but more in detail. Therefore, I will introduce this section in four parts as follows.
 
-### References
+#### Functional capabilities
+First of all, codehub contains almost all of the functions of github. So, the basic funtions of codehub are: 
 
-1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
+* Provide the repositories of users' code.
+* Control the version of code, include the forward and backward the the code and software.
+* Allow mutiple branches to exist, to enable different developers change the file at the same time, which promote the efficiency.
+* And so on...
 
+Of course, these are the functions of the github itself. Codehub uses the interface github provides to implement the basic functions. Besides, Codehub has its own special characteristics. They are:
+
+* Breaking the dilemma of the absence of github client on the ios platform.
+* Account managment. Users can switch several accounts conveniently.
 
 ### 5. Information View
 The ultimate purpose of any software system is to manipulate data in some form. This data may be stored persistently in a database management system, in ordinary files, or in some other storage medium such as flash memory, or it may be transiently manipulated in memory while a program executes.
@@ -181,12 +191,57 @@ The High Level View has showed in the directory ViewGraph. First, the user inter
 
 <img alt="HighLevelView" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/HighLevelView.png" width="100%">
 
-#### Module Structure Model
+#### 6.1 Module Structure Model
 The	module structure model defines the organisation	of the system's	code clustering	related source code	files	into modules and determining the dependencies	between	them [1].	In this section	first	the	modules	of the project are briefly described and then	the	dependencies between them	are	visualised in a	diagram. It	should be	also	noted	that this	section	focuses only on	the	internal modules	of the project and not the external	dependencies.
-##### I -- Module Structure of Core
-1. Data
-2. Extension
-3. Filter
-4. Message
-5. Service
 
+As a framework, the source code of CodeHub could be	organized	as model structure,	as shown on	the	figure below.	In this figure,	the	ecosystem	of CodeHub is divided	into two major parts: Core internal structrue and Ios client structrue.
+
+<img alt="ecosystem of CodeHub" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/PackageDiagram1.jpg" width="100%">
+
+##### 6.1.1 -- Module Structure of Core
+1. Data: This module contains classes that define the user's class and language repository, not dependent on other submodules, but it relies on external dependencies such as .Net packages.
+2. Extension: This module contains extensions to Github's external extensions and command lines, provides command-line invocation functionality, and some exception handling features that do not have any dependencies on other modules in CodeHub. There is a dependency on external packages such as ReactiveUI.
+3. Filter: This module defines some of the related functions of the problem filter, which depends on some submodules in the VIewModel module.
+4. Message: This module defines related sub-modules and sub-functions for message passing and processing, including the function mechanism of adding Gist messages, login logout messages, pull push messages, source code editing changes, etc. This module is in the ViewModel APP, Accounts Submodules such as PullRequests are called and depend on.
+5. Service: This module defines the functional sub-modules of the service layer in the project, which hides the details of the business logic layer. It needs to organize the business micro-services internally, provide a more macro-oriented, presentation-oriented service logic, and expose and package using the contract interface. All interactions in the system are entered from the presentation layer. It is primarily responsible for the logical application design of the business module. Under this module, the function codes of related services such as account service, log service, and network activity service are included. This module relies on the data modules under the Core module and is also dependent on many submodules in the ViewModel.
+6. Properties: This module uses the reflection mechanism to define the functionality of AssemblyInfo, using Guid to expose the COM components of the project. This module has no dependencies on other modules in Codehub.
+7. Util: This module contains some of the tool class modules under the underlying logic, such as extended access to Github, functional integration of emoticons, and sub-modules such as code repository flags and view block extensions, which depend on the Service module, and the ViewModel module. There are also some submodules that depend on it.
+8. ViewModels： This module defines the connection layer ViewModel of View and Model. In MVVMCross, the ViewModel interacts with the Model (data layer), and the ViewMode can be viewed by the View. The ViewModel can optionally provide hooks for the view to pass events to the model. An important implementation strategy for this layer is to separate the Model from the View, ie the view that the ViewModel should not be aware of. In this module, it specifically includes sub-modules such as Account, App, ChangeSets, Events, Gists, Issues, Notifications, Organizations, PullRequests, Respositories, Search, Source, and Users. These sub-modules are functionally and structurally dependent on each other. It also contains dependencies from external packages such as MVVMCross.Platform. In addition, the ViewModel module also includes function sub-modules such as filters, Markdown and web browsing.
+
+##### 6.1.2 -- Module Structure of IOS Client
+1. DialogElements: This module defines the specific classification and function of the dialog module. It is a module that interacts with the outside world. It is a high-level implementation of the corresponding ViewController component, including the specific interface elements such as User Element and PullRequests element.
+2. Resources: This module contains some static resource files on the ios side, such as icon material. The resource files in this module are used in the View module. Does not depend on other internal modules
+3. Services: This module is a high-level implementation of the Service layer under the Core module. It relies on the definition and implementation of the Service sub-module under the Core module, and exposes the interface to call the corresponding function of each corresponding sub-module in the ViewController.
+4. Utilities: This module is a high-level implementation of the Util submodule under the Core module. It relies on the definition and implementation of the Util submodule under the Core module. It provides a more specific definition and implementation of the utility class and exposes the interface to each of the ViewController. The corresponding submodule calls the relevant function.
+5. ViewControllers: This module is a high-level implementation of the ViewModel sub-module under the Core module. It relies on the definition and implementation of the ViewModel sub-module under the Core module, and provides sub-modules corresponding to the ViewModel, such as Accounts, Application, Events, Filters, Gists, Organization, Sub-modules such as PullRequests, Respositories, Search, Source, and User are the connection layer components that are closer to the user and directly define the underlying logic functions that interact with the user.
+6. TableViewCells: This module is a view controller class that interacts directly with the user and contains the direct logic for interacting with the user. And the module contains various view layouts and styles, and implements interfaces and components that interact directly with the user.
+7. TableViewSources: This module contains the resource invocation interface with the user interaction view, including the user's dynamic warehouse data interface, static resource framework source, and so on. Rely on the definition and implementation of sub-modules such as Respositories under ViewController.
+8. Views: This module is a collection of iOS-client application view classes. It defines the static component function implementation of the view, providing direct front-end components and functional definitions for user interaction.
+
+The specific dependency diagrams between the submodules under these two modules are as follows:
+
+<img alt="specific dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/Main.jpg" width="100%">
+
+
+
+As can be seen from the figure, the sub-modules under the .Core module are actually lower-level definitions at the data layer, service layer, application layer, etc., and the sub-modules under the .ios module are correspondingly higher-level implementations. It relies on and calls the interface of the corresponding submodule under the core, and realizes the view and logic of interacting with the user.
+
+
+
+### 7. Deployment View
+Deployment view describes the environment into which the system will be deployed, including capturing the dependencies the system has on its runtime environment. This view captures the hardware environment that your system needs (primarily the processing nodes, network interconnections, and disk storage facilities required), the technical environment requirements for each element, and the mapping of the software elements to the runtime environment that will execute them.
+
+CodeHub	is supported by	Mac OS operating system. So, CodeHub require ios platform to deploy. It can be reached on any iOS platform, like iPhone, iPod Touch, and iPad device.
+
+#### Third-Party Software Requirements:
+1. Xamarin: Xamarin was founded in 2011 to make mobile development incredibly fast and simple. Xamarin's products simplify application development for multiple platforms, including iOS, Android, Windows Phone, and Mac App. Xamarin was founded and participated by many well-known open source community developers, and is the open source, cross-platform implementation of the C# and .NET frameworks, the leader of the Mono project.
+2. Json.NET: Json.NET is a popular high-performance JSON framework for .NET.It has lots of benifits: Flexible JSON serializer for converting between .NET objects and JSON. LINQ to JSON for manually reading and writing JSON. High performance: faster than .NET's built-in JSON serializers. Write indented, easy-to-read JSON. Convert JSON to and from XML. Supports .NET 2, .NET 3.5, .NET 4, .NET 4.5, Silverlight, Windows Phone and Windows 8 Store. The JSON serializer in Json.NET is a good choice when the JSON you are reading or writing maps closely to a .NET class. LINQ to JSON is good for situations where you are only interested in getting values from JSON, you don't have a class to serialize or deserialize to, or the JSON is radically different from your class and you need to manually read and write from your objects.
+3. MVVMCross: MvvmCross is a cross-platform MVVM framework that enables developers to create powerful cross platform apps. It supports Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.Forms, Universal Windows Platform (UWP) and Windows Presentation Framework (WPF).
+4. Marked.js: Marked.js is a library written in JavaScript that can be transcoded online by Markdown. It's very convenient to compile the Markdown code to HTML and display it directly, and it supports full customization of various formats.
+
+#### The deployment diagram:
+
+
+### References
+
+1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
