@@ -119,8 +119,6 @@ The Codehub developer, of course, also uses the API provided by GitHub to get al
 #### 5.2 Information structure and content
 Let's take a look at how Codehub uses the GitHub API to get user data and use it successfully. The main thing to focus on here is the code files in the Data folder. 
 
-![Data Source Code]()
-
 The developers have completed the acquisition and change methods of user data in these classes , but at the same time we need to refer to the [official developer documentation](https://developer.github.com/v3/) provided by GitHub, in which the GitHub clearly shows the interface of the data and how to obtain and use it.
 
 The following json codes shows the official root endpoints of the GitHub data:
@@ -163,7 +161,7 @@ The following json codes shows the official root endpoints of the GitHub data:
 
 Just look at the names of these urls and we will know the specific data used by these paths. Of course, these are not all used in Codehub, but it is true that developers use most of the data. In the `\CodeHub.Core\Data\Account.cs` file, the developer defines a number of methods for getting and modifying data, but here the developer just completes basic classes and method definitions, implements the data retrieval and return, and the specific data usage and modification is still done in each functional module.
 
-![Static Information Structure Model]()
+![Static Information Structure Model](http://p7n3irs4w.bkt.clouddn.com/Static%20Information%20Structure%20Model%20%281%29.png)
 
 
 #### 5.3 Information purpose and usage
@@ -203,7 +201,9 @@ In Codehub, in the `\CodeHub.Core\ViewModels\Accounts\OAuthLoginViewModel.cs`, d
 
 According to the official document and the detailed usage of the data in the source code of Codehub, we draw a sketch of the information flow model, the main purpose of the data is to get the user's GitHub information and data, and update the latest GitHub news, of course, when it comes to the operation of the repos, it will also provide timely reminder of the repos information and repos-related messages. And codehub will be synchronized to GitHub in time as user modify and update the data.
 
-![Information Flow Model]()
+![Information Flow Model1](http://p7n3irs4w.bkt.clouddn.com/Information%20Flow%20Model_1.png)
+![Information Flow Model2](http://p7n3irs4w.bkt.clouddn.com/Information%20Flow%20Model_2.png)
+
 
 
 ### 6. Development View
