@@ -306,6 +306,17 @@ For Performance & Scalability, we are mostly concered about following perspectiv
 
 - hardware resource requirements: The hardware resources required by Codehub are very few. First of all, at the system level, it is based on its original intention， limited to the IOS platform. Strictly speaking, it requires iOS 9.0 or higher, compatible with iPhone, iPad and iPod touch. The memory taken up by the app is 101M. For such an application, the memory occupied is a little bit large. Maybe it is not able to do a good collection and packaging when the application is exported, and observe the code structure we can find some static resources that won't work too much. Codehub's runtime memory usage is satisfactory, and its runtime memory ratio is small in the IOS thanks to the optimization of the application.
 
+### 8. Evolution Perspective
+The very ability of software to be “soft” means that stakeholders expect a software-based system to be able to evolve very quickly. As we mentioned in the above analysis, Codehub has a lot of room to improve as a mature application to become a more popular and more comprehensive application.
+
+- Model update:As long as we observe the various views of Codehub in use, we will find its similarity with GitHub Web, but the developer has actually done some different front-end layout for its mobile-side features. Despite this, the shortcomings still exist, especially when it comes to the interaction logic between the specific code view and the repository information in the repository. The cumbersome operations and the unclear operation buttons can be uncomfortable. In addition, due to the different interfaces on the iPhone and iPad, we believe that the view design of the iPhone is not as good as the design on the iPad. The use of the sidebar is very convenient for the user.
+In addition, for the notification of some news and activities, I also hope that Codehub can integrate Events and Notifications so that users can see their latest news on the application home page.
+The display of the search results also needs to be optimized. The current display results are not displayed in the same way as GitHub, unless the search keywords are completely entered.
+
+- Function extension: Since Codehub is a mobile-side GitHub Client, developers should be able to do some appropriate extensions based on the functionality of the Web version. For example, the better mobile-side code viewing and edting we mentioned earlier, the issues model can also be improved. The portable and timely features of the mobile side increase the interaction of issues. It will be great to add one-to-one communication with specific developers, but as GitHub does not provide a similar functional interface, developers must have difficulty in implementing these extensions. 
+
+- Platform: Codehub currently only has the IOS platform version, but we really hope that developers can launch the Android version later, because the Android version of the GitHub Client has been removed since long ago, so the current Android client is also vacant, especially considering Xamarin's efficient for all-platform development capabilities, it's easy to do application porting.
+
 ### References
 
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
