@@ -320,3 +320,7 @@ The display of the search results also needs to be optimized. The current displa
 ### References
 
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
+2. [MvvmCross documentation](https://www.mvvmcross.com/documentation/)
+3. [UML of Component diagram](https://en.wikipedia.org/wiki/Component_diagram)
+4. [UML of Package diagram](https://en.wikipedia.org/wiki/Package_diagram)
+5. [UML of Deployment diagram](https://en.wikipedia.org/wiki/Deployment_diagram)
