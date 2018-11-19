@@ -293,7 +293,7 @@ CodeHub	is supported by	Mac OS operating system. So, CodeHub require ios platfor
 #### The deployment diagram:
 <img alt="specific dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/DeploymentDiagram1.jpg" width="100%">
 
-### 7. Performance & Scalability Perspective
+### 8. Performance & Scalability Perspective
 This perspective addresses two related quality properties for large information systems: performance and scalability. These properties are important because, in large systems, they can cause more unexpected, complex, and expensive problems late in the system lifecycle than most of the other properties combined.
 
 For Performance & Scalability, we are mostly concered about following perspectives.  
@@ -306,7 +306,7 @@ For Performance & Scalability, we are mostly concered about following perspectiv
 
 - hardware resource requirements: The hardware resources required by Codehub are very few. First of all, at the system level, it is based on its original intention， limited to the IOS platform. Strictly speaking, it requires iOS 9.0 or higher, compatible with iPhone, iPad and iPod touch. The memory taken up by the app is 101M. For such an application, the memory occupied is a little bit large. Maybe it is not able to do a good collection and packaging when the application is exported, and observe the code structure we can find some static resources that won't work too much. Codehub's runtime memory usage is satisfactory, and its runtime memory ratio is small in the IOS thanks to the optimization of the application.
 
-### 8. Evolution Perspective
+### 9. Evolution Perspective
 The very ability of software to be “soft” means that stakeholders expect a software-based system to be able to evolve very quickly. As we mentioned in the above analysis, Codehub has a lot of room to improve as a mature application to become a more popular and more comprehensive application.
 
 - Model update:As long as we observe the various views of Codehub in use, we will find its similarity with GitHub Web, but the developer has actually done some different front-end layout for its mobile-side features. Despite this, the shortcomings still exist, especially when it comes to the interaction logic between the specific code view and the repository information in the repository. The cumbersome operations and the unclear operation buttons can be uncomfortable. In addition, due to the different interfaces on the iPhone and iPad, we believe that the view design of the iPhone is not as good as the design on the iPad. The use of the sidebar is very convenient for the user.
@@ -317,7 +317,16 @@ The display of the search results also needs to be optimized. The current displa
 
 - Platform: Codehub currently only has the IOS platform version, but we really hope that developers can launch the Android version later, because the Android version of the GitHub Client has been removed since long ago, so the current Android client is also vacant, especially considering Xamarin's efficient for all-platform development capabilities, it's easy to do application porting.
 
-### References
+### 10. Conclusion
+This document provides every reader with an overview of Codehub from multiple software architectural views and perspectives as defined in Rozanski & Woods's book. Conclusion can be drawn that Codehub is an basicaly outstanding IOS client application for GitHub as it contains almost every function aspect of GitHub Web with simple and beautiful interface, excellent interaction and friendly operation.
+
+We analyzed its software level constructs from Context View, Functional View, Information View, Development View and Deployment View, those five software architecture views, and concluded that it is an excellent IOS application developed with Xamarin, but In terms of the practical application of the software, from Stakeholder Analysis  Performance & Scalability Perspective and Evolution Perspective, Codehub also has the disadvantages of unclear positioning, insufficient audience, and limited functionality.
+
+Undoutedly, our recovery of its architecture, and the analysis of its practical application, will inevitably lead to some flaws, especially in the case of our lack of in-depth study of the software architecture. The unfamiliarity of Xamrin, Json.Net, Mvvm and other frameworks may also cause us to make mistakes in project recovery. In addition, Codehub developers and official websites do not provide us with detailed development materials and official documents, and its developers are almost only one person that we tried to contact and failed, our progress and accuracy were greatly affected during writing this document.
+
+The last update time of Codehub is nine months ago, we still hope that its developers can continue to improve Codehub's views and features, bringing us a more perfect IOS GitHub client.
+
+### 11. References
 
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
 2. [MvvmCross documentation](https://www.mvvmcross.com/documentation/)
