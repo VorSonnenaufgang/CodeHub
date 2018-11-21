@@ -64,6 +64,7 @@ Codehub is a widely-used app to access github account on ios platform. As one ca
 * Supported By: Github.
 * Communication tools: Github.
 * Users: any users on ios platform(e.g.	iPhone, iPod Touch, and iPad device).
+<img alt="Context View" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/context-view.png" width="100%">
 
 ### 4. Functional View
 In this section, I will write something about the functional view. The functional view, which emphasizes the functional capabilities and functional design philosophy of the system, is something like the responsibilities of context view, but more in detail. Therefore, I will introduce this section in four parts as follows.
@@ -92,9 +93,9 @@ In the figure below, one can identify three external interfaces:
 
 I will now discuss the responsibilities and the philosophy underlying the design of each of these interfaces by applying the architectural principles I identified.
 
-<B>Firstly</B>, I will considering Codehub client ui api. As detailed in the figure above, the ui api contains Json.NET, ReactiveUI, MVVMCross and Marked.js. They connect the users' behavior and request with the codehub client platform. MVVMCross and RectiveUI is common framework of C# which is used to beautify the ui. And the Json.NET is a library used to parse the json object. And finally, Marked.js is also a library to make the ui more beautiful.
+<B>Firstly</B>, the Codehub client ui api will be considered. As detailed in the figure above, the ui api contains Json.NET, ReactiveUI, MVVMCross and Marked.js. They connect the users' behavior and request with the codehub client platform. MVVMCross and RectiveUI are the common frameworks of C# which are used to beautify the ui. As to the Json.Net, it is a library used to parse the json object. And finally, Marked.js is also a library to make the ui more beautiful.
 
-<B>Secondly</B>, I will introduce the build-tool, Xamarin, which provide the connection with the IDE(visual studio) and the ios platform. According to the Microsoft, <a href="http://example.net/">https://docs.microsoft.com/zh-cn/xamarin/</a>, Xamarin is a portable framework. Xamarin is a C#-based cross-platform mobile app development tool that developers can use to develop native apps for iOS, Android, Mac and Windows Phone. Through the cross-platform nature of Xamarin, you can use C# language to develop various platform applications. Xamarin's cross-platform development idea is to use C# to complete all platform-shared, platform-independent app logic; because the UI and interaction of each platform are different, use Xamarin-encapsulated C# API to access and manipulate native controls. , UI development for different platforms. In this way, mobile development is more efficient and simpler.
+<B>Secondly</B>, I will introduce the build-tool, Xamarin, which provides the connection with the IDE(visual studio) and the ios platform. According to the Microsoft, <a href="http://example.net/">https://docs.microsoft.com/zh-cn/xamarin/</a>, Xamarin is a portable framework, which means it can easily be used on different plateforms. Xamarin is a C#-based cross-platform mobile app development tool that developers can use to develop native apps for iOS, Android, Mac and Windows Phone. Through the cross-platform nature of Xamarin, one can use C# language to develop various platform applications. So, why Xamarin can do this and what is its cross-platform development idea. After refering some blogs, I found that it uses C# to complete all platform-shared, platform-independent app logic parts. As to the UI and interaction with each platform, because they are different, the significance of using Xamarin-encapsulated C# API is highlighted. It is used to access and manipulate native controls, UI development for different platforms. In this way, mobile development is more efficient and simpler.
 
 In fact, when using Xamarin, the efficiency of development get faster. The two figures below shows the efficiency of Xamarin on the platform of Android and iOS. The first figure is the development efficiency of Xamarin for iOS devices. Xamarin performs well and is 30% faster than Objective-C. I think this is the main reason why codehub is not using oc but C#. And it is second only to C++ on Android devices, so it is seen that Xamarin is a highly efficient cross-platform framework. It is a good decision to develop codehub using Xamarin.
 
@@ -118,8 +119,6 @@ The Codehub developer, of course, also uses the API provided by GitHub to get al
 
 #### 5.2 Information structure and content
 Let's take a look at how Codehub uses the GitHub API to get user data and use it successfully. The main thing to focus on here is the code files in the Data folder. 
-
-![Data Source Code]()
 
 The developers have completed the acquisition and change methods of user data in these classes , but at the same time we need to refer to the [official developer documentation](https://developer.github.com/v3/) provided by GitHub, in which the GitHub clearly shows the interface of the data and how to obtain and use it.
 
@@ -163,7 +162,7 @@ The following json codes shows the official root endpoints of the GitHub data:
 
 Just look at the names of these urls and we will know the specific data used by these paths. Of course, these are not all used in Codehub, but it is true that developers use most of the data. In the `\CodeHub.Core\Data\Account.cs` file, the developer defines a number of methods for getting and modifying data, but here the developer just completes basic classes and method definitions, implements the data retrieval and return, and the specific data usage and modification is still done in each functional module.
 
-![Static Information Structure Model]()
+![Static Information Structure Model](http://p7n3irs4w.bkt.clouddn.com/Static%20Information%20Structure%20Model%20%281%29.png)
 
 
 #### 5.3 Information purpose and usage
@@ -203,7 +202,9 @@ In Codehub, in the `\CodeHub.Core\ViewModels\Accounts\OAuthLoginViewModel.cs`, d
 
 According to the official document and the detailed usage of the data in the source code of Codehub, we draw a sketch of the information flow model, the main purpose of the data is to get the user's GitHub information and data, and update the latest GitHub news, of course, when it comes to the operation of the repos, it will also provide timely reminder of the repos information and repos-related messages. And codehub will be synchronized to GitHub in time as user modify and update the data.
 
-![Information Flow Model]()
+![Information Flow Model1](http://p7n3irs4w.bkt.clouddn.com/Information%20Flow%20Model_1.png)
+![Information Flow Model2](http://p7n3irs4w.bkt.clouddn.com/Information%20Flow%20Model_2.png)
+
 
 
 ### 6. Development View
@@ -293,6 +294,43 @@ CodeHub	is supported by	Mac OS operating system. So, CodeHub require ios platfor
 #### The deployment diagram:
 <img alt="specific dependency diagrams" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/DeploymentDiagram1.jpg" width="100%">
 
-### References
+### 8. Performance & Scalability Perspective
+This perspective addresses two related quality properties for large information systems: performance and scalability. These properties are important because, in large systems, they can cause more unexpected, complex, and expensive problems late in the system lifecycle than most of the other properties combined.
+
+For Performance & Scalability, we are mostly concered about following perspectives.  
+
+- response time: After our test, in the case of a better network, the data loading and data update after login are completed in 10s, which is thanks to the interface provided by GitHub to obtain data quickly, and good data organization in this app along with use of json.net. In addition, despite the fact that the initial user data loading speed is fast enough, we tried to get the logined users to get some notifications and events, the response time of these reminders is slower than those of the web side. Because the app is received on the GitHub web side, the data is updated after the corresponding information, so the lag is understandable. The good news is that this lag is not very long. In a few seconds, we can also get the message from the Codehub on the mobile side, so we can confirm that the message response on Codehub is also quick and timely. What about relogined uses? As those model programs related to retrive and present data has the function of reusing resources and results, so response time of the app will be even quicker when we relogin.
+
+- throughput: Frankly speaking, in the face of an application where the number of users is not large, pressuer testing is not particularly necessary. In addition, the applications developed with the Xamarin framework will be optimized for certain operational efficiency, especially The original C#. According to the developer, the server selected for Codehub was also able to carry a sufficient amount of users to communicate with the network at the same time. We wrote a small program to continue to create and delete repositories in Codehub for a period of time, and constantly starred in a certain repository, Codehub did not have any abnormal problems in the test. As mentioned in the development view, each of Codehub's view backends uses tactics of optimizing repetitive processing and minimizing the use of shared resources, so it can maintain the stability of the application in the case of multiple users and frequent operations.
+
+- scalability: there are also some pitfalls in the application, the main point is that Codehub's scalability is not enough. The main reason for this problem is that the developer has made the Codehub almost exactly the same as the GitHub when designing the front-end and back-end of the application. The function of CodeHub comes from GitHub, but also limited to GitHub, but there is too much indirection when interacting with GtiHub's web side. It's not easy to extend it on a fully rewritten mobile GitHub, whether it is the design of the function points or the specific implementation of the front and back ends, it is limited by the existing framework of GtiHub. The scalability property of a system is closely related to performance, but rather than considering how quickly the system performs its current workload, scalability focuses on the predictability of the system’s performance as the workload increases. So if we design and add some new features in the existing framework of the system, we can't ensure that the system can still run with the current efficiency and error-free operation.
+
+- hardware resource requirements: The hardware resources required by Codehub are very few. First of all, at the system level, it is based on its original intention， limited to the IOS platform. Strictly speaking, it requires iOS 9.0 or higher, compatible with iPhone, iPad and iPod touch. The memory taken up by the app is 101M. For such an application, the memory occupied is a little bit large. Maybe it is not able to do a good collection and packaging when the application is exported, and observe the code structure we can find some static resources that won't work too much. Codehub's runtime memory usage is satisfactory, and its runtime memory ratio is small in the IOS thanks to the optimization of the application.
+
+### 9. Evolution Perspective
+The very ability of software to be “soft” means that stakeholders expect a software-based system to be able to evolve very quickly. As we mentioned in the above analysis, Codehub has a lot of room to improve as a mature application to become a more popular and more comprehensive application.
+
+- Model update:As long as we observe the various views of Codehub in use, we will find its similarity with GitHub Web, but the developer has actually done some different front-end layout for its mobile-side features. Despite this, the shortcomings still exist, especially when it comes to the interaction logic between the specific code view and the repository information in the repository. The cumbersome operations and the unclear operation buttons can be uncomfortable. In addition, due to the different interfaces on the iPhone and iPad, we believe that the view design of the iPhone is not as good as the design on the iPad. The use of the sidebar is very convenient for the user.
+In addition, for the notification of some news and activities, I also hope that Codehub can integrate Events and Notifications so that users can see their latest news on the application home page.
+The display of the search results also needs to be optimized. The current display results are not displayed in the same way as GitHub, unless the search keywords are completely entered.
+
+- Function extension: Since Codehub is a mobile-side GitHub Client, developers should be able to do some appropriate extensions based on the functionality of the Web version. For example, the better mobile-side code viewing and edting we mentioned earlier, the issues model can also be improved. The portable and timely features of the mobile side increase the interaction of issues. It will be great to add one-to-one communication with specific developers, but as GitHub does not provide a similar functional interface, developers must have difficulty in implementing these extensions. 
+
+- Platform: Codehub currently only has the IOS platform version, but we really hope that developers can launch the Android version later, because the Android version of the GitHub Client has been removed since long ago, so the current Android client is also vacant, especially considering Xamarin's efficient for all-platform development capabilities, it's easy to do application porting.
+
+### 10. Conclusion
+This document provides every reader with an overview of Codehub from multiple software architectural views and perspectives as defined in Rozanski & Woods's book. Conclusion can be drawn that Codehub is an basicaly outstanding IOS client application for GitHub as it contains almost every function aspect of GitHub Web with simple and beautiful interface, excellent interaction and friendly operation.
+
+We analyzed its software level constructs from Context View, Functional View, Information View, Development View and Deployment View, those five software architecture views, and concluded that it is an excellent IOS application developed with Xamarin, but In terms of the practical application of the software, from Stakeholder Analysis  Performance & Scalability Perspective and Evolution Perspective, Codehub also has the disadvantages of unclear positioning, insufficient audience, and limited functionality.
+
+Undoutedly, our recovery of its architecture, and the analysis of its practical application, will inevitably lead to some flaws, especially in the case of our lack of in-depth study of the software architecture. The unfamiliarity of Xamrin, Json.Net, Mvvm and other frameworks may also cause us to make mistakes in project recovery. In addition, Codehub developers and official websites do not provide us with detailed development materials and official documents, and its developers are almost only one person that we tried to contact and failed, our progress and accuracy were greatly affected during writing this document.
+
+The last update time of Codehub is nine months ago, we still hope that its developers can continue to improve Codehub's views and features, bringing us a more perfect IOS GitHub client.
+
+### 11. References
 
 1. Nick Rozanski and Eoin Woods. Software Systems Architecture: Working with Stakeholders using Viewpoints and Perspectives. Addison-Wesley, 2012.
+2. [MvvmCross documentation](https://www.mvvmcross.com/documentation/)
+3. [UML of Component diagram](https://en.wikipedia.org/wiki/Component_diagram)
+4. [UML of Package diagram](https://en.wikipedia.org/wiki/Package_diagram)
+5. [UML of Deployment diagram](https://en.wikipedia.org/wiki/Deployment_diagram)
