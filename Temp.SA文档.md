@@ -220,7 +220,7 @@ The	module structure model defines the organisation	of the system's	code cluster
 
 As a framework, the source code of CodeHub could be	organized	as model structure,	as shown on	the	figure below.	In this figure,	the	ecosystem	of CodeHub is divided	into two major parts: Core internal structrue and Ios client structrue.
 
-<img alt="ecosystem of CodeHub" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/PackageDiagram1.jpg" width="100%">
+<img alt="ecosystem of CodeHub" src="https://github.com/VorSonnenaufgang/CodeHub/blob/master/ViewGraphs/PackageDiagram.png" width="100%">
 
 ##### 6.1.1 -- Module Structure of Core
 1. Data: This module contains classes that define the user's class and language repository, not dependent on other submodules, but it relies on external dependencies such as .Net packages.
