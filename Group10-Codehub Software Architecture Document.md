@@ -7,17 +7,7 @@ CodeHub is an iOS application, it can be reached on any iOS platform, like iPhon
 This document studies CodeHub by looking at its organization and architecture from Stakeholder Analysis, Logical View, Process View, Physical View, Development View, and more perspectives. The study goes from a high-level analysis to more technical views and perspectives. At last, we have concluded that Codehub is a well completed-structred, full-featured, user-friendly client for GitHub on the iOS platform.
 
 ### Table of Contents
-1. [Introduction](#1.-Introduction)
-2. Stakeholder Analysis
-3. Context View
-4. Functional View
-5. Information View
-6. Development View
-7. Deployment View
-8. Performance & Scalability Perspective
-9. Evolution Perspective
-10. Conclusion
-11. References
+[TOC]
 
 ### 1. Introduction
 
