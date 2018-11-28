@@ -8,16 +8,16 @@ This document studies CodeHub by looking at its organization and architecture fr
 
 ### Table of Contents
 1. [Introduction](#1-Introduction)
-2. Stakeholder Analysis
-3. Context View
-4. Functional View
-5. Information View
-6. Development View
-7. Deployment View
-8. Performance & Scalability Perspective
-9. Evolution Perspective
-10. Conclusion
-11. References
+2. [Stakeholder Analysis](#2-Stakeholder-Analysis)
+3. [Context View](#3-Context-View)
+4. [Functional View](#4-Functional-View)
+5. [Information View](#5-Information-View)
+6. [Development View](#6-Development-View)
+7. [Deployment View](#7-Deployment-View)
+8. [Performance & Scalability Perspective](#8-performance--scalability-perspective)
+9. [Evolution Perspective](#9-Evolution-Perspective)
+10. [Conclusion](#10-Conclusion)
+11. [References](#11-References)
 
 ### 1. Introduction
 
@@ -334,3 +334,5 @@ The last update time of Codehub is nine months ago, we still hope that its devel
 3. [UML of Component diagram](https://en.wikipedia.org/wiki/Component_diagram)
 4. [UML of Package diagram](https://en.wikipedia.org/wiki/Package_diagram)
 5. [UML of Deployment diagram](https://en.wikipedia.org/wiki/Deployment_diagram)
+6. [GitHub API v3](https://developer.github.com/v3/)
+7. [CodeHubAPP Project](https://github.com/CodeHubApp/CodeHub)
